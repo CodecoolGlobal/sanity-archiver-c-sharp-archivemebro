@@ -24,8 +24,15 @@ namespace SanityArchiver.DesktopUI.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            EncryptFile("C:/Users/matra/OneDrive/hello.txt", "C:/Users/matra/OneDrive/hellno.enc");
-            DecryptFile("C:/Users/matra/OneDrive/hellno.enc", "C:/Users/matra/OneDrive/helloxD" + CreateDateString(DateTime.Now) + ".txt");
+            string fileName = "hello.txt";
+
+            string encodedName = "hellno.enc";
+            string directory = "C:/Users/matra/OneDrive/";
+
+            EncryptFile(directory + fileName, directory + encodedName);
+            DecryptFile(
+                directory + encodedName,
+                directory + SplitFileNameToNameAndExtension(fileName)[0] + CreateDateString(DateTime.Now) + SplitFileNameToNameAndExtension(fileName)[1]);
         }
 
         private void EncryptFile(string inputFile, string outputFile)
@@ -100,6 +107,23 @@ namespace SanityArchiver.DesktopUI.Views
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.Append(date.Hour).Append(date.Minute).Append(date.Second);
             return stringBuilder.ToString();
+        }
+
+        private string[] SplitFileNameToNameAndExtension(string fileName)
+        {
+            int number = 0;
+
+            for (int i = 0; i < fileName.Length; i++)
+            {
+                if (fileName[i] == '.')
+                {
+                    number = i;
+                }
+            }
+
+            string[] fileNameParts = { fileName.Substring(0, number), fileName.Substring(number) };
+
+            return fileNameParts;
         }
     }
 }
