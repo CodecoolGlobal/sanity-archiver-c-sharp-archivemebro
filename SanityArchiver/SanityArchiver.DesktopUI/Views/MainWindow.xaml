@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="Sanity Archiver" Height="450" Width="800">
     <Grid>
-        
+        <Button Content="Button" HorizontalAlignment="Left" Margin="171,114,0,0" VerticalAlignment="Top" Width="218" Height="103" Click="Button_Click"/>
+
     </Grid>
 </Window>
