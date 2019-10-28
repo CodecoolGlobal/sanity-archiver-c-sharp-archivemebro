@@ -25,7 +25,7 @@ namespace SanityArchiver.DesktopUI.Views
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             EncryptFile("C:/Users/matra/OneDrive/hello.txt", "C:/Users/matra/OneDrive/hellno.enc");
-            DecryptFile("C:/Users/matra/OneDrive/hellno.enc", "C:/Users/matra/OneDrive/helloxD.txt");
+            DecryptFile("C:/Users/matra/OneDrive/hellno.enc", "C:/Users/matra/OneDrive/helloxD" + CreateDateString(DateTime.Now) + ".txt");
         }
 
         private void EncryptFile(string inputFile, string outputFile)
@@ -93,6 +93,13 @@ namespace SanityArchiver.DesktopUI.Views
                 cs.Close();
                 fsCrypt.Close();
             }
+        }
+
+        private string CreateDateString(DateTime date)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.Append(date.Hour).Append(date.Minute).Append(date.Second);
+            return stringBuilder.ToString();
         }
     }
 }
