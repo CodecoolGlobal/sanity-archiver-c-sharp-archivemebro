@@ -2,10 +2,7 @@
 using System.Windows;
 using System.Text;
 using System.IO;
-using System.Security;
 using System.Security.Cryptography;
-using System.Runtime.InteropServices;
-using System.Text.RegularExpressions;
 
 namespace SanityArchiver.DesktopUI.Views
 {
@@ -24,15 +21,13 @@ namespace SanityArchiver.DesktopUI.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string fileName = "hello.txt";
-
+            string filePath = "C:/Users/matra/OneDrive/hello.txt";
             string encodedName = "hellno.enc";
-            string directory = "C:/Users/matra/OneDrive/";
 
-            EncryptFile(directory + fileName, directory + encodedName);
+            EncryptFile(filePath, Path.GetDirectoryName(filePath) + "/" + encodedName);
             DecryptFile(
-                directory + encodedName,
-                directory + SplitFileNameToNameAndExtension(fileName)[0] + CreateDateString(DateTime.Now) + SplitFileNameToNameAndExtension(fileName)[1]);
+                Path.GetDirectoryName(filePath) + "/" + encodedName,
+                Path.GetDirectoryName(filePath) + "/" + Path.GetFileNameWithoutExtension(filePath) + CreateDateString(DateTime.Now) + Path.GetExtension(filePath));
         }
 
         private void EncryptFile(string inputFile, string outputFile)
@@ -105,7 +100,7 @@ namespace SanityArchiver.DesktopUI.Views
         private string CreateDateString(DateTime date)
         {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.Append(date.Hour).Append(date.Minute).Append(date.Second);
+            stringBuilder.Append("_").Append(date.Hour).Append(date.Minute).Append(date.Second);
             return stringBuilder.ToString();
         }
 
