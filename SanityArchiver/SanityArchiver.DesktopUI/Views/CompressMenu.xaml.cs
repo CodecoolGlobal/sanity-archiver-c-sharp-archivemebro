@@ -24,17 +24,13 @@ namespace SanityArchiver.DesktopUI.Views
     {
         private readonly CompressedFileVm _compressedFile;
 
-        //private CompressedFile _compressedFile = new CompressedFile();
-
         /// <summary>
-        /// The
+        /// The View of the CompressMenu.xaml.cs
         /// </summary>
         public CompressMenu()
         {
             InitializeComponent();
             _compressedFile = new CompressedFileVm();
-
-         //   this.DataContext = _compressedFile;
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)

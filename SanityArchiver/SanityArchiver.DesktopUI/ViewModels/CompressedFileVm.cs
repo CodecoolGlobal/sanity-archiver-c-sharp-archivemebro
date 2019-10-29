@@ -11,7 +11,7 @@ using SanityArchiver.DesktopUI.ViewModels;
 namespace SanityArchiver.Application.Models
 {
     /// <summary>
-    /// Model for containing the files to compress
+    /// ViewModel for the Compress feature
     /// </summary>
     public class CompressedFileVm : ViewModelBase
     {
@@ -19,15 +19,15 @@ namespace SanityArchiver.Application.Models
         private string _compressedName;
 
         /// <summary>
-        /// effsf
+        /// Initializes a new instance of the <see cref="CompressedFileVm"/> class.
         /// </summary>
         public CompressedFileVm()
         {
-            GetTheFilesToCompress();
+            CollectTheFilesToCompress();
         }
 
         /// <summary>
-        /// Gets or sets the observableCollection of files to compress (FileInfo is the Model in this case.
+        /// Gets or sets the observableCollection of files to compress (FileInfo is the Model in this case.)
         /// </summary>
         public ObservableCollection<FileInfo> FilesToCompress
         {
@@ -46,7 +46,7 @@ namespace SanityArchiver.Application.Models
         }
 
         /// <summary>
-        /// Gets or sets
+        /// Gets or sets the name of the compressed archive.
         /// </summary>
         public string CompressedName
         {
@@ -77,14 +77,14 @@ namespace SanityArchiver.Application.Models
                 {
                     foreach (FileInfo fileToZip in FilesToCompress)
                     {
-                        //read the file bytes
+                        // read the file bytes
                         byte[] fileToZipBytes = System.IO.File.ReadAllBytes(fileToZip.FullName);
 
-                        //create the entry - this is the zipped filename
-                        //change slashes - now it's VALID
+                        // create the entry - this is the zipped filename
+                        // hange slashes - now it's VALID
                         ZipArchiveEntry zipFileEntry = zipArchive.CreateEntry(fileToZip.Name);
 
-                        //add the file contents
+                        // add the file contents
                         using (Stream zipEntryStream = zipFileEntry.Open())
                         using (BinaryWriter zipFileBinary = new BinaryWriter(zipEntryStream))
                         {
@@ -102,9 +102,9 @@ namespace SanityArchiver.Application.Models
         }
 
         /// <summary>
-        /// GetTheFilesToCompress
+        /// fills the list _filesToCompress with files.
         /// </summary>
-        public void GetTheFilesToCompress()
+        public void CollectTheFilesToCompress()
         {
             _filesToCompress.Add(new FileInfo(@"C:\Users\Áts Bálint\codecool\test_dir\archiveMeBroTestFiles\aaa.txt"));
             _filesToCompress.Add(new FileInfo(@"C:\Users\Áts Bálint\codecool\test_dir\archiveMeBroTestFiles\bbb.txt"));
