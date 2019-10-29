@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Collections.ObjectModel;
+using System.IO.Compression;
 using SanityArchiver.DesktopUI.ViewModels;
 
 namespace SanityArchiver.Application.Models
@@ -59,6 +60,43 @@ namespace SanityArchiver.Application.Models
                 if (_compressedName != value)
                 {
                     _compressedName = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Compresses the selected files into the dir with zipFileName
+        /// </summary>
+        /// <param name="dir"> The directory to make the archive</param>
+        /// <param name="zipFileName"> Name of the archive</param>
+        public void Compress(string dir, string zipFileName)
+        {
+            using (MemoryStream zipMS = new MemoryStream())
+            {
+                using (ZipArchive zipArchive = new ZipArchive(zipMS, ZipArchiveMode.Create, true))
+                {
+                    foreach (FileInfo fileToZip in FilesToCompress)
+                    {
+                        //read the file bytes
+                        byte[] fileToZipBytes = System.IO.File.ReadAllBytes(fileToZip.FullName);
+
+                        //create the entry - this is the zipped filename
+                        //change slashes - now it's VALID
+                        ZipArchiveEntry zipFileEntry = zipArchive.CreateEntry(fileToZip.Name);
+
+                        //add the file contents
+                        using (Stream zipEntryStream = zipFileEntry.Open())
+                        using (BinaryWriter zipFileBinary = new BinaryWriter(zipEntryStream))
+                        {
+                            zipFileBinary.Write(fileToZipBytes);
+                        }
+                    }
+                }
+
+                using (FileStream finalZipFileStream = new FileStream(dir + "\\" + zipFileName + ".zip", FileMode.Create))
+                {
+                    zipMS.Seek(0, SeekOrigin.Begin);
+                    zipMS.CopyTo(finalZipFileStream);
                 }
             }
         }
