@@ -75,6 +75,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ViewModels\CompressedFileVm.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\CompressMenu.xaml.cs">
       <DependentUpon>CompressMenu.xaml</DependentUpon>
     </Compile>

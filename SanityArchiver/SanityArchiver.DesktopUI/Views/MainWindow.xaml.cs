@@ -14,5 +14,11 @@ namespace SanityArchiver.DesktopUI.Views
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Window compressWindow = new CompressMenu();
+            compressWindow.Show();
+        }
     }
 }
