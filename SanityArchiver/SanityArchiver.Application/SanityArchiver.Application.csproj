@@ -45,6 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\DirInfo.cs" />
+    <Compile Include="Models\DriInfo.cs" />
+    <Compile Include="Models\ExplorerService.cs" />
+    <Compile Include="Models\FilInfo.cs" />
+    <Compile Include="Models\ModelBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
