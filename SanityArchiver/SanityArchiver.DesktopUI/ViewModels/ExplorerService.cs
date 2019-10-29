@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SanityArchiver.Application.Models
+namespace SanityArchiver.DesktopUI.ViewModels
 {
     /// <summary>
     /// Provides structural information of the directory passed to it.
@@ -17,18 +17,18 @@ namespace SanityArchiver.Application.Models
         /// </summary>
         /// <param name="directory">the directory to take item-names from</param>
         /// <returns>either filenames and paths or null</returns>
-        public static IList<Fil> GetChildFiles(string directory)
+        public static IList<FileInfo> GetChildFiles(string directory)
         {
             try
             {
                 return (from item in Directory.GetFiles(directory)
-                       select new Fil(item)).ToList();
+                       select new FileInfo(item)).ToList();
             }
             catch (FileNotFoundException)
             {
             }
 
-            return new List<Fil>();
+            return new List<FileInfo>();
         }
 
         /// <summary>
@@ -36,27 +36,27 @@ namespace SanityArchiver.Application.Models
         /// </summary>
         /// <param name="directory">the directory to retreive items from</param>
         /// <returns>a list of directories or null</returns>
-        public static IList<Dir> GetChildDirectories(string directory)
+        public static IList<DirectoryInfo> GetChildDirectories(string directory)
         {
             try
             {
                 return (from item in Directory.GetDirectories(directory)
-                        select new Dir(item)).ToList();
+                        select new DirectoryInfo(item)).ToList();
             }
             catch (DirectoryNotFoundException)
             {
             }
 
-            return new List<Dir>();
+            return new List<DirectoryInfo>();
         }
 
         /// <summary>
         /// Gets drives, or root directories.
         /// </summary>
         /// <returns>a list of root directories</returns>
-        public static IList<Dri> GetRootDirectories()
+        public static IList<DriveInfo> GetRootDirectories()
         {
-            return (from drive in DriveInfo.GetDrives() select new Dri(drive)).ToList();
+            return (from drive in DriveInfo.GetDrives() select drive).ToList();
         }
     }
 }
