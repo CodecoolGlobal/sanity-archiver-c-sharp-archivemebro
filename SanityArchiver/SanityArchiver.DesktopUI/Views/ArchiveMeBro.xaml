@@ -8,7 +8,7 @@
         Title="Archive My Files" Height="597" Width="600" ResizeMode="NoResize">
     <Grid>
         <TreeView x:Name="DirectoryMap" HorizontalAlignment="Left" Height="473" Margin="10,56,0,0" VerticalAlignment="Top" Width="311" TreeViewItem.Collapsed="ItemCollapseHandler" TreeViewItem.Expanded="ItemExpandedHandler" TreeViewItem.Selected="ItemSelected"/>
-        <Button x:Name="Encrypt" Content="Encrypt /Decrypt Files" HorizontalAlignment="Left" Margin="393,56,0,0" VerticalAlignment="Top" Width="146" Click="Encrypt_Click" />
+        <Button x:Name="Encrypt" Content="Encrypt /Decrypt Files" HorizontalAlignment="Left" Margin="393,56,0,0" VerticalAlignment="Top" Width="146" Click="EncryptDecrypt_Click" />
         <Button x:Name="Archive" Content="Archive Files" HorizontalAlignment="Left" Margin="393,100,0,0" VerticalAlignment="Top" Width="146" Click="Archive_Click" />
         
         <Label Content="Files Selected:" HorizontalAlignment="Left" Margin="341,215,0,0" VerticalAlignment="Top"/>

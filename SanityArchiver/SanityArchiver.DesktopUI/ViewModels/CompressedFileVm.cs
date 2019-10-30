@@ -15,7 +15,7 @@ namespace SanityArchiver.Application.Models
     /// </summary>
     public class CompressedFileVm : ViewModelBase
     {
-        private ObservableCollection<FileInfo> _filesToCompress = new ObservableCollection<FileInfo>();
+        private List<FileInfo> _filesToCompress;
         private string _compressedName;
 
         /// <summary>
@@ -23,13 +23,13 @@ namespace SanityArchiver.Application.Models
         /// </summary>
         public CompressedFileVm()
         {
-            CollectTheFilesToCompress();
+            _filesToCompress = DataManager.GetSelectedFiles();
         }
 
         /// <summary>
         /// Gets or sets the observableCollection of files to compress (FileInfo is the Model in this case.)
         /// </summary>
-        public ObservableCollection<FileInfo> FilesToCompress
+        public List<FileInfo> FilesToCompress
         {
             get
             {
@@ -78,7 +78,7 @@ namespace SanityArchiver.Application.Models
                     foreach (FileInfo fileToZip in FilesToCompress)
                     {
                         // read the file bytes
-                        byte[] fileToZipBytes = System.IO.File.ReadAllBytes(fileToZip.FullName);
+                        byte[] fileToZipBytes = File.ReadAllBytes(fileToZip.FullName);
 
                         // create the entry - this is the zipped filename
                         // hange slashes - now it's VALID
@@ -99,17 +99,6 @@ namespace SanityArchiver.Application.Models
                     zipMS.CopyTo(finalZipFileStream);
                 }
             }
-        }
-
-        /// <summary>
-        /// fills the list _filesToCompress with files.
-        /// </summary>
-        public void CollectTheFilesToCompress()
-        {
-            _filesToCompress.Add(new FileInfo(@"C:\Users\Áts Bálint\codecool\test_dir\archiveMeBroTestFiles\bbb.txt"));
-            _filesToCompress.Add(new FileInfo(@"C:\Users\Áts Bálint\codecool\test_dir\archiveMeBroTestFiles\ccc.txt"));
-            _filesToCompress.Add(new FileInfo(@"C:\Users\Áts Bálint\codecool\test_dir\archiveMeBroTestFiles\ddd.txt"));
-            _filesToCompress.Add(new FileInfo(@"C:\Users\Áts Bálint\codecool\test_dir\archiveMeBroTestFiles\newdoc.txt"));
         }
     }
 }

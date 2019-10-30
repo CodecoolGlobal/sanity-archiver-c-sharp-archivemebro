@@ -16,27 +16,37 @@ namespace SanityArchiver.DesktopUI.ViewModels
         /// </summary>
         public void PerformAction()
         {
-            foreach (var filePath in DataManager.GetSelectedFiles())
+            var files = DataManager.GetSelectedFiles();
+            if (files.Count > 0)
             {
-                var path = filePath.FullName;
-                if (File.Exists(path))
+                foreach (var filePath in files)
                 {
-                    if (Path.GetExtension(path) == ".txt")
+                    var path = filePath.FullName;
+                    if (File.Exists(path))
                     {
-                        EncryptFile(path, Path.ChangeExtension(path, ".enc"));
+                        if (Path.GetExtension(path) == ".txt")
+                        {
+                            EncryptFile(path, Path.ChangeExtension(path, ".enc"));
+                        }
+                        else if (Path.GetExtension(path) == ".enc")
+                        {
+                            DecryptFile(
+                            path,
+                            Path.ChangeExtension(path, ".txt")
+                            .Insert(path.IndexOf('.'), CreateDateString(DateTime.Now)));
+                        }
                     }
-                    else if (Path.GetExtension(path) == ".enc")
+                    else
                     {
-                        DecryptFile(
-                        path,
-                        Path.ChangeExtension(path, ".txt")
-                        .Insert(path.IndexOf('.'), CreateDateString(DateTime.Now)));
+                        ExceptionHandler.HandleException(new FileNotFoundException());
                     }
                 }
-                else
-                {
-                    ExceptionHandler.HandleException(new FileNotFoundException());
-                }
+
+                MessageBox.Show("All operations were successful!");
+            }
+            else
+            {
+                MessageBox.Show("No files have been selected!");
             }
         }
 
@@ -75,9 +85,9 @@ namespace SanityArchiver.DesktopUI.ViewModels
                 cs.Close();
                 fileStreamCrypt.Close();
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Encryption failed!", "Error");
+                ExceptionHandler.HandleException(ex);
             }
         }
 

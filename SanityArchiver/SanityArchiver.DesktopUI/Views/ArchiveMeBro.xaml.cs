@@ -87,12 +87,13 @@ namespace SanityArchiver.DesktopUI.Views
 
         private void Archive_Click(object sender, RoutedEventArgs e)
         {
-            new CompressMenu().Show();
+            new CompressMenu().ShowDialog();
         }
 
         private void EncryptDecrypt_Click(object sender, RoutedEventArgs e)
         {
-            new EncryptionWindow().Show();
+            var encryptor = new EncryptionViewModel();
+            encryptor.PerformAction();
         }
 
         private void ItemSelected(object sender, RoutedEventArgs e)

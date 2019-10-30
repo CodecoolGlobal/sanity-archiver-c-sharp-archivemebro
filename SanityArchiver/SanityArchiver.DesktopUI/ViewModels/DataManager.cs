@@ -38,7 +38,7 @@ namespace SanityArchiver.DesktopUI.ViewModels
         /// Gets selected file list.
         /// </summary>
         /// <returns>selected files list</returns>
-        public static IList<FileInfo> GetSelectedFiles()
+        public static List<FileInfo> GetSelectedFiles()
         {
             return _selectedFiles;
         }
