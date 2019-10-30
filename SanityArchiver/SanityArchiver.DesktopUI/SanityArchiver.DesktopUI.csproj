@@ -60,7 +60,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Views\MainWindow.xaml">
+    <Page Include="Views\ArchiveMeBro.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -68,8 +68,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Views\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="ViewModels\ExceptionHandler.cs" />
+    <Compile Include="ViewModels\DataManager.cs" />
+    <Compile Include="ViewModels\ExplorerService.cs" />
+    <Compile Include="Views\ArchiveMeBro.xaml.cs">
+      <DependentUpon>ArchiveMeBro.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -98,6 +101,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="ReadMe.md" />
+    <None Include="stylecop.json" />
     <None Include="ViewModels\ReadMe.md" />
   </ItemGroup>
   <ItemGroup>
