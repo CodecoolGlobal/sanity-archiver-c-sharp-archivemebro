@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -42,6 +43,7 @@ namespace SanityArchiver.DesktopUI.Views
             item.IsExpanded = false;
             item.Items.Clear();
             DataManager.AddDummyTag(item);
+            item.IsExpanded = false;
         }
 
         private void ItemExpandedHandler(object sender, RoutedEventArgs e)
@@ -82,8 +84,9 @@ namespace SanityArchiver.DesktopUI.Views
                         }
                     }
                 }
-                catch (DirectoryNotFoundException)
+                catch (Exception ex)
                 {
+                    ExceptionHandler.HandleException(ex);
                 }
 
                 item.IsExpanded = true;

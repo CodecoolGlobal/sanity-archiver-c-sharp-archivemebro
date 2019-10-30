@@ -43,8 +43,9 @@ namespace SanityArchiver.DesktopUI.ViewModels
                 return (from item in Directory.GetDirectories(directory)
                         select new DirectoryInfo(item)).ToList();
             }
-            catch (DirectoryNotFoundException)
+            catch (Exception ex)
             {
+                ExceptionHandler.HandleException(ex);
             }
 
             return new List<DirectoryInfo>();

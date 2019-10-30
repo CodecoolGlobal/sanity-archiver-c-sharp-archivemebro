@@ -68,6 +68,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ViewModels\ExceptionHandler.cs" />
     <Compile Include="ViewModels\DataManager.cs" />
     <Compile Include="ViewModels\ExplorerService.cs" />
     <Compile Include="Views\ArchiveMeBro.xaml.cs">
