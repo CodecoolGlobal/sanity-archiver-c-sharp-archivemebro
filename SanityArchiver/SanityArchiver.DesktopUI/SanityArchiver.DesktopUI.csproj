@@ -116,6 +116,7 @@
     </None>
     <None Include="ReadMe.md" />
     <None Include="stylecop.json" />
+    <None Include="stylecop1.json" />
     <None Include="ViewModels\ReadMe.md" />
   </ItemGroup>
   <ItemGroup>

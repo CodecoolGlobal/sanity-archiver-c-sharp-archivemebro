@@ -84,5 +84,29 @@ namespace SanityArchiver.DesktopUI.Views
                 item.IsExpanded = true;
             }
         }
+
+        private void Archive_Click(object sender, RoutedEventArgs e)
+        {
+            new CompressMenu();
+        }
+
+        private void Encrypt_Click(object sender, RoutedEventArgs e)
+        {
+            new EncryptionWindow();
+        }
+
+        private void Decrypt_Click(object sender, RoutedEventArgs e)
+        {
+            new EncryptionWindow();
+        }
+
+        private void ItemSelected(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void ClickMe(object sender, RoutedEventArgs e)
+        {
+            new CompressMenu().Show();
+        }
     }
 }

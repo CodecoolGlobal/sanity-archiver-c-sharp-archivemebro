@@ -25,6 +25,7 @@ namespace SanityArchiver.DesktopUI.Views
         private readonly CompressedFileVm _compressedFile;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="CompressMenu"/> class.
         /// The View of the CompressMenu.xaml.cs
         /// </summary>
         public CompressMenu()
