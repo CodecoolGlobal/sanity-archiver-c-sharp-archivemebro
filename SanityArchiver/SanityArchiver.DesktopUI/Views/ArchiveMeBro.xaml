@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SanityArchiver.DesktopUI"
         mc:Ignorable="d"
-        Title="Sanity Archiver" Height="700" Width="600">
+        Title="Archive My Files" Height="597" Width="600" ResizeMode="NoResize">
     <Grid>
-        <TreeView x:Name="DirectoryMap" HorizontalAlignment="Left" Height="649" Margin="10,10,0,0" VerticalAlignment="Top" Width="311" TreeViewItem.Collapsed="ItemCollapseHandler" TreeViewItem.Expanded="ItemExpandedHandler"/>
+        <TreeView x:Name="DirectoryMap" HorizontalAlignment="Left" Height="473" Margin="10,56,0,0" VerticalAlignment="Top" Width="311" TreeViewItem.Collapsed="ItemCollapseHandler" TreeViewItem.Expanded="ItemExpandedHandler"/>
     </Grid>
 </Window>
