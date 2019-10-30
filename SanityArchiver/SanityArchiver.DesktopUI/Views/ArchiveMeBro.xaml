@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:SanityArchiver.DesktopUI"
         mc:Ignorable="d"
         Title="Sanity Archiver" Height="700" Width="600">
-    <TreeView x:Name="DirectoryMap" HorizontalAlignment="Left" Height="649" Margin="10,10,0,0" VerticalAlignment="Top" Width="191" RenderTransformOrigin="0.483,0.497" TreeViewItem.Collapsed="ItemCollapseHandler" TreeViewItem.Expanded="ItemExpandedHandler" TreeViewItem.Selected="ItemSelectedHandler" MouseDown="DirectoryMap_MouseDown"/>
-
+    <Grid>
+        <TreeView x:Name="DirectoryMap" HorizontalAlignment="Left" Height="649" Margin="10,10,0,0" VerticalAlignment="Top" Width="191" TreeViewItem.Collapsed="ItemCollapseHandler" TreeViewItem.Expanded="ItemExpandedHandler"/>
+    </Grid>
 </Window>

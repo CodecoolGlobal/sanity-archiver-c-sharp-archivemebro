@@ -1,8 +1,8 @@
-﻿using System.Windows;
-using SanityArchiver.DesktopUI.ViewModels;
-using System.Windows.Controls;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Controls;
+using SanityArchiver.DesktopUI.ViewModels;
 
 namespace SanityArchiver.DesktopUI.Views
 {
@@ -22,20 +22,19 @@ namespace SanityArchiver.DesktopUI.Views
 
         private void InitRoots()
         {
-            foreach(var drive in ExplorerService.GetRootDirectories())
-
+            foreach (var drive in ExplorerService.GetRootDirectories())
             {
                 DirectoryMap.Items.Add(DataManager.CreateTreeItem(drive));
             }
         }
 
-        private void ItemSelectedHandler(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-        }
+        //private void ItemSelectedHandler(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        //{
+        //}
 
-        private void ItemDoubleClickedHandler(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-        }
+        //private void ItemDoubleClickedHandler(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        //{
+        //}
 
         private void ItemCollapseHandler(object sender, RoutedEventArgs e)
         {
@@ -48,10 +47,8 @@ namespace SanityArchiver.DesktopUI.Views
         private void ItemExpandedHandler(object sender, RoutedEventArgs e)
         {
             TreeViewItem item = e.Source as TreeViewItem;
-            item.IsExpanded = true;
-            string targetDir = ((DirectoryInfo)item.Tag).FullName;
-            if(item.Items.Count == 1 && item.Items[0] is string)
-
+            string targetDir = "null";
+            if (item.Items.Count == 1 && item.Items[0] is string)
             {
                 item.Items.Clear();
 
@@ -59,18 +56,20 @@ namespace SanityArchiver.DesktopUI.Views
                 IList<FileInfo> files = null;
                 if (item.Tag is DriveInfo)
                 {
+                    targetDir = ((DriveInfo)item.Tag).Name;
                     subDirs = ExplorerService.GetChildDirectories(targetDir);
                 }
+
                 if (item.Tag is DirectoryInfo)
                 {
-
+                    targetDir = targetDir = ((DirectoryInfo)item.Tag).FullName;
                     subDirs = ExplorerService.GetChildDirectories(targetDir);
                     files = ExplorerService.GetChildFiles(targetDir);
                 }
 
                 try
                 {
-                    foreach(DirectoryInfo sub in subDirs)
+                    foreach (DirectoryInfo sub in subDirs)
                     {
                         item.Items.Add(DataManager.CreateTreeItem(sub));
                     }
@@ -86,9 +85,9 @@ namespace SanityArchiver.DesktopUI.Views
                 catch (DirectoryNotFoundException)
                 {
                 }
+
+                item.IsExpanded = true;
             }
         }
-
-
     }
 }
