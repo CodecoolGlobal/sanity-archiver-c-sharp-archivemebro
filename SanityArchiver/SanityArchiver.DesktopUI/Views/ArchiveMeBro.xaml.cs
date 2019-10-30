@@ -49,7 +49,7 @@ namespace SanityArchiver.DesktopUI.Views
         private void ItemExpandedHandler(object sender, RoutedEventArgs e)
         {
             TreeViewItem item = e.Source as TreeViewItem;
-            string targetDir = "null";
+            string targetDir = string.Empty;
             if (item.Items.Count == 1 && item.Items[0] is string)
             {
                 item.Items.Clear();
