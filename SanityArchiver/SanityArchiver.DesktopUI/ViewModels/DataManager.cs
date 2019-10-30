@@ -57,7 +57,6 @@ namespace SanityArchiver.DesktopUI.ViewModels
                 Header = $"{filo.Name} {filo.CreationTime} {filo.Length / 1048576} MB",
                 Tag = filo.FullName,
             };
-            AddDummyTag(item);
             return item;
         }
 
