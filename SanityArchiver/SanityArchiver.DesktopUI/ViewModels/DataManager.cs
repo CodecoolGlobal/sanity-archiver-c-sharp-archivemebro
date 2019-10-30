@@ -51,7 +51,7 @@ namespace SanityArchiver.DesktopUI.ViewModels
         {
             if (FileInSelected(inf))
             {
-                ExceptionHandler.HandleException(new FileNotFoundException());
+                ExceptionHandler.HandleException(new FileLoadException());
             }
             else
             {

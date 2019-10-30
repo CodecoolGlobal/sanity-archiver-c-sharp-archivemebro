@@ -14,26 +14,29 @@ namespace SanityArchiver.DesktopUI.ViewModels
         /// <summary>
         /// Performs action based on extension of file
         /// </summary>
-        /// <param name="filePath">filePath</param>
-        public void PerformAction(string filePath)
+        public void PerformAction()
         {
-            if (File.Exists(filePath))
+            foreach (var filePath in DataManager.GetSelectedFiles())
             {
-                if (Path.GetExtension(filePath) == ".txt")
+                var path = filePath.FullName;
+                if (File.Exists(path))
                 {
-                    EncryptFile(filePath, Path.ChangeExtension(filePath, ".enc"));
+                    if (Path.GetExtension(path) == ".txt")
+                    {
+                        EncryptFile(path, Path.ChangeExtension(path, ".enc"));
+                    }
+                    else if (Path.GetExtension(path) == ".enc")
+                    {
+                        DecryptFile(
+                        path,
+                        Path.ChangeExtension(path, ".txt")
+                        .Insert(path.IndexOf('.'), CreateDateString(DateTime.Now)));
+                    }
                 }
-                else if (Path.GetExtension(filePath) == ".enc")
+                else
                 {
-                    DecryptFile(
-                    filePath,
-                    Path.ChangeExtension(filePath, ".txt")
-                    .Insert(filePath.IndexOf('.'), CreateDateString(DateTime.Now)));
+                    ExceptionHandler.HandleException(new FileNotFoundException());
                 }
-            }
-            else
-            {
-                MessageBox.Show("File doesn't exist!");
             }
         }
 

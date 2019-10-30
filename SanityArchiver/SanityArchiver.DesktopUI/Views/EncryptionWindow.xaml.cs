@@ -34,13 +34,6 @@ namespace SanityArchiver.DesktopUI.Views
             DataContext = _viewModel;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            string filePath = "C:/Users/matra/OneDrive/hello.enc";
-            string filePath1 = "C:/Users/matra/OneDrive/hello.txt";
 
-            _viewModel.PerformAction(filePath1);
-            _viewModel.PerformAction(filePath);
-        }
     }
 }

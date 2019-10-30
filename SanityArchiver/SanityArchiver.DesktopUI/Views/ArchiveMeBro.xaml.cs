@@ -90,12 +90,7 @@ namespace SanityArchiver.DesktopUI.Views
             new CompressMenu().Show();
         }
 
-        private void Encrypt_Click(object sender, RoutedEventArgs e)
-        {
-            new EncryptionWindow().Show();
-        }
-
-        private void Decrypt_Click(object sender, RoutedEventArgs e)
+        private void EncryptDecrypt_Click(object sender, RoutedEventArgs e)
         {
             new EncryptionWindow().Show();
         }
@@ -108,7 +103,7 @@ namespace SanityArchiver.DesktopUI.Views
                 FileInfo item = new FileInfo(treeItem.Tag.ToString());
                 if (DataManager.FileInSelected(item))
                 {
-                    ExceptionHandler.HandleException(new FileNotFoundException());
+                    ExceptionHandler.HandleException(new FileLoadException());
                 }
                 else
                 {
