@@ -34,6 +34,12 @@ namespace SanityArchiver.DesktopUI.ViewModels
                 errorButton = MessageBoxButton.OKCancel;
                 errorImage = MessageBoxImage.Warning;
             }
+            else if (e is FileNotFoundException)
+            {
+                warningText = "File has already been added, you dimwit!";
+                errorButton = MessageBoxButton.YesNoCancel;
+                errorImage = MessageBoxImage.Question;
+            }
             else
             {
                 warningText = "An unknown error occurred. Please cry loudly.";
