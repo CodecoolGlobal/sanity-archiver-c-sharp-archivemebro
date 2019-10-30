@@ -29,14 +29,6 @@ namespace SanityArchiver.DesktopUI.Views
             }
         }
 
-        //private void ItemSelectedHandler(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        //{
-        //}
-
-        //private void ItemDoubleClickedHandler(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        //{
-        //}
-
         private void ItemCollapseHandler(object sender, RoutedEventArgs e)
         {
             TreeViewItem item = e.Source as TreeViewItem;

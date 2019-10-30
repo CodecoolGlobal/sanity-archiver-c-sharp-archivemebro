@@ -8,5 +8,7 @@
         Title="Archive My Files" Height="597" Width="600" ResizeMode="NoResize">
     <Grid>
         <TreeView x:Name="DirectoryMap" HorizontalAlignment="Left" Height="473" Margin="10,56,0,0" VerticalAlignment="Top" Width="311" TreeViewItem.Collapsed="ItemCollapseHandler" TreeViewItem.Expanded="ItemExpandedHandler"/>
+        <Button Content="Encrypt Files" HorizontalAlignment="Left" Margin="425,114,0,0" VerticalAlignment="Top" Width="93" />
+        <Button Content="Archive Files" HorizontalAlignment="Left" Margin="425,169,0,0" VerticalAlignment="Top" Width="93" />
     </Grid>
 </Window>
