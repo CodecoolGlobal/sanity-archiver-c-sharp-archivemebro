@@ -24,7 +24,7 @@ namespace SanityArchiver.DesktopUI.ViewModels
                 return (from item in Directory.GetFiles(directory)
                        select new FileInfo(item)).ToList();
             }
-            catch (FileNotFoundException ex)
+            catch (Exception ex)
             {
                 ExceptionHandler.HandleException(ex);
             }

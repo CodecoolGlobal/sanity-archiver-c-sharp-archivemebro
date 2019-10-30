@@ -16,7 +16,7 @@ namespace SanityArchiver.DesktopUI.ViewModels
         /// <summary>
         /// Selected files from the directory-map.
         /// </summary>
-        private static IList<FileInfo> _selectedFiles = new List<FileInfo>();
+        private static List<FileInfo> _selectedFiles = new List<FileInfo>();
 
         /// <summary>
         /// Creates a tree item for directoryinfo.
@@ -49,8 +49,9 @@ namespace SanityArchiver.DesktopUI.ViewModels
         /// <param name="inf">Fileinfo of a file</param>
         public static void AddSelectedFile(FileInfo inf)
         {
-            if (!_selectedFiles.Contains(inf))
+            if (FileInSelected(inf))
             {
+                ExceptionHandler.HandleException(new FileNotFoundException());
             }
             else
             {
@@ -72,7 +73,19 @@ namespace SanityArchiver.DesktopUI.ViewModels
         /// <param name="filo">Fileinfo of file</param>
         public static void RemoveSpecificSelected(FileInfo filo)
         {
-            _selectedFiles.RemoveAt(_selectedFiles.IndexOf(filo));
+            List<int> indices = new List<int>();
+            foreach (var item in _selectedFiles)
+            {
+                if (item.FullName.Equals(filo.FullName))
+                {
+                    indices.Add(_selectedFiles.IndexOf(item));
+                }
+            }
+
+            foreach (var index in indices)
+            {
+                _selectedFiles.RemoveAt(index);
+            }
         }
 
         /// <summary>
@@ -100,6 +113,7 @@ namespace SanityArchiver.DesktopUI.ViewModels
         {
             TreeViewItem item = new TreeViewItem
             {
+                Name = "FileSource",
                 Header = $"{filo.Name} {filo.CreationTime} {filo.Length / 1048576} MB",
                 Tag = filo.FullName,
             };
@@ -113,6 +127,24 @@ namespace SanityArchiver.DesktopUI.ViewModels
         public static void AddDummyTag(TreeViewItem item)
         {
             item.Items.Add("Loading...");
+        }
+
+        /// <summary>
+        /// Checks if fileinfo is already included in files list.
+        /// </summary>
+        /// <param name="inf">fileinfo</param>
+        /// <returns>true or false</returns>
+        internal static bool FileInSelected(FileInfo inf)
+        {
+            foreach (var item in _selectedFiles)
+            {
+                if (item.FullName.Equals(inf.FullName))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

@@ -10,6 +10,9 @@
         <TreeView x:Name="DirectoryMap" HorizontalAlignment="Left" Height="473" Margin="10,56,0,0" VerticalAlignment="Top" Width="311" TreeViewItem.Collapsed="ItemCollapseHandler" TreeViewItem.Expanded="ItemExpandedHandler" TreeViewItem.Selected="ItemSelected"/>
         <Button x:Name="Encrypt" Content="Encrypt Files" HorizontalAlignment="Left" Margin="415,56,0,0" VerticalAlignment="Top" Width="93" Click="Encrypt_Click" />
         <Button x:Name="Decrypt" Content="Decrypt Files" HorizontalAlignment="Left" Margin="415,98,0,0" VerticalAlignment="Top" Width="93" Click="Decrypt_Click" />
-        <Button x:Name="Archive" Content="Archive" HorizontalAlignment="Left" Margin="415,176,0,0" VerticalAlignment="Top" Width="93" Click="Archive_Click"/>
+        <Label Content="Files Selected:" HorizontalAlignment="Left" Margin="341,215,0,0" VerticalAlignment="Top"/>
+        <ListBox x:Name="SelectedItemsList" HorizontalAlignment="Left" Height="238" Margin="341,257,0,0" VerticalAlignment="Top" Width="226" />
+        <Button x:Name="RemoveSelected" Content="Remove Entry" HorizontalAlignment="Left" Margin="341,509,0,0" VerticalAlignment="Top" Width="102" Click="RemoveSelected_Click"/>
+        <Button x:Name="ClearAll" Content="Clear All Entries" HorizontalAlignment="Left" Margin="468,509,0,0" VerticalAlignment="Top" Width="99" Click="ClearAll_Click"/>
     </Grid>
 </Window>

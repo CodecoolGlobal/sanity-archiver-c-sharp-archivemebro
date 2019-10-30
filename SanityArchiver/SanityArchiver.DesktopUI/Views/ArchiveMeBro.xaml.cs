@@ -92,16 +92,44 @@ namespace SanityArchiver.DesktopUI.Views
 
         private void Encrypt_Click(object sender, RoutedEventArgs e)
         {
-            new EncryptionWindow();
+            new EncryptionWindow().Show();
         }
 
         private void Decrypt_Click(object sender, RoutedEventArgs e)
         {
-            new EncryptionWindow();
+            new EncryptionWindow().Show();
         }
 
         private void ItemSelected(object sender, RoutedEventArgs e)
         {
+            TreeViewItem treeItem = e.Source as TreeViewItem;
+            if (treeItem.Name.Equals("FileSource"))
+            {
+                FileInfo item = new FileInfo(treeItem.Tag.ToString());
+                if (DataManager.FileInSelected(item))
+                {
+                    ExceptionHandler.HandleException(new FileNotFoundException());
+                }
+                else
+                {
+                    DataManager.AddSelectedFile(item);
+                    SelectedItemsList.Items.Add(item);
+                }
+            }
+        }
+
+        private void ClearAll_Click(object sender, RoutedEventArgs e)
+        {
+            SelectedItemsList.Items.Clear();
+            DataManager.ClearSelectedsList();
+        }
+
+        private void RemoveSelected_Click(object sender, RoutedEventArgs e)
+        {
+            var selected = SelectedItemsList.SelectedItem.ToString().Replace(@"\\", @"\");
+            FileInfo item = new FileInfo(selected);
+            SelectedItemsList.Items.Remove(SelectedItemsList.SelectedItem);
+            DataManager.RemoveSpecificSelected(item);
         }
     }
 }
