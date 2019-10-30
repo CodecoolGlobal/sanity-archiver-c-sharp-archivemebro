@@ -87,7 +87,7 @@ namespace SanityArchiver.DesktopUI.Views
 
         private void Archive_Click(object sender, RoutedEventArgs e)
         {
-            new CompressMenu();
+            new CompressMenu().Show();
         }
 
         private void Encrypt_Click(object sender, RoutedEventArgs e)
@@ -102,11 +102,6 @@ namespace SanityArchiver.DesktopUI.Views
 
         private void ItemSelected(object sender, RoutedEventArgs e)
         {
-        }
-
-        private void ClickMe(object sender, RoutedEventArgs e)
-        {
-            new CompressMenu().Show();
         }
     }
 }

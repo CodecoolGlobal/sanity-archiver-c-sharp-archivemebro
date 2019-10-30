@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SanityArchiver.DesktopUI.Views"
         mc:Ignorable="d"
-        Title="CompressMenu" Height="120" Width="300">
+        Title="CompressMenu" Height="180" Width="300">
     <Grid x:Name="CompressGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -14,10 +14,13 @@
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
-        <Label Grid.Column="0" Grid.Row="0" Margin="2,10,8.2,4.6">Compressed File Name:</Label>
-        <TextBox x:Name="CompressedFileName" Grid.Row="0" Margin="7.8,8,7.6,8.6" Grid.Column="1"/>
-        <Button Grid.Column="0" Grid.Row="1" Margin="8" Click="Save_Click">Save</Button>
-        <Button Grid.Column="1" Grid.Row="1" Margin="8" Click="Cancel_Click">Cancel</Button>
+        <Label Grid.Column="0" Grid.Row="0" Margin="2,10,8.2,4.6">Directory to compress:</Label>
+        <Label Grid.Column="0" Grid.Row="1" Margin="2,10,8.2,4.6">Compressed File Name:</Label>
+        <TextBox x:Name="DirToCompress" Grid.Row="0" Grid.Column="1" Margin="7.8,8,7.6,8.6" />
+        <TextBox x:Name="CompressedFileName" Grid.Row="1" Grid.Column="1" Margin="7.8,8,7.6,8.6" />
+        <Button Grid.Column="0" Grid.Row="2" Margin="8" Click="Save_Click">Save</Button>
+        <Button Grid.Column="1" Grid.Row="2" Margin="8" Click="Cancel_Click">Cancel</Button>
     </Grid>
 </Window>

@@ -106,7 +106,6 @@ namespace SanityArchiver.Application.Models
         /// </summary>
         public void CollectTheFilesToCompress()
         {
-            _filesToCompress.Add(new FileInfo(@"C:\Users\Áts Bálint\codecool\test_dir\archiveMeBroTestFiles\aaa.txt"));
             _filesToCompress.Add(new FileInfo(@"C:\Users\Áts Bálint\codecool\test_dir\archiveMeBroTestFiles\bbb.txt"));
             _filesToCompress.Add(new FileInfo(@"C:\Users\Áts Bálint\codecool\test_dir\archiveMeBroTestFiles\ccc.txt"));
             _filesToCompress.Add(new FileInfo(@"C:\Users\Áts Bálint\codecool\test_dir\archiveMeBroTestFiles\ddd.txt"));

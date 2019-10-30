@@ -38,14 +38,14 @@ namespace SanityArchiver.DesktopUI.Views
         {
             string zipFileName = CompressedFileName.Text;
             _compressedFile.CompressedName = zipFileName;
-            string dir = @"C:\Users\Áts Bálint\codecool\test_dir\archiveMeBroTestFiles";
-            MessageBox.Show(zipFileName);
+            string dir = DirToCompress.Text;
             _compressedFile.Compress(dir, zipFileName);
+            Close();
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Cancel clicked");
+            Close();
         }
     }
 }
