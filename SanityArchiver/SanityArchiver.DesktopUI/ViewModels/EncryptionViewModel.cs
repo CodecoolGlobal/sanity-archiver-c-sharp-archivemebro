@@ -8,6 +8,10 @@ namespace SanityArchiver.DesktopUI.ViewModels
 {
     public class EncryptionViewModel
     {
+        /// <summary>
+        /// Performs action based on extension of file
+        /// </summary>
+        /// <param name="filePath">filePath</param>
         public void PerformAction(string filePath)
         {
             if (File.Exists(filePath))
@@ -30,6 +34,11 @@ namespace SanityArchiver.DesktopUI.ViewModels
             }
         }
 
+        /// <summary>
+        /// Encrypts the inputFile into the outputFile
+        /// </summary>
+        /// <param name="inputFile">inputFile</param>
+        /// <param name="outputFile">outputFile</param>
         private void EncryptFile(string inputFile, string outputFile)
         {
             try
@@ -66,6 +75,11 @@ namespace SanityArchiver.DesktopUI.ViewModels
             }
         }
 
+        /// <summary>
+        /// Decrypts the inputFile into the outputFile
+        /// </summary>
+        /// <param name="inputFile">inputFile</param>
+        /// <param name="outputFile">outputFile</param>
         private void DecryptFile(string inputFile, string outputFile)
         {
             {
@@ -97,6 +111,10 @@ namespace SanityArchiver.DesktopUI.ViewModels
             }
         }
 
+        /// <summary>
+        /// Creates a string consisting of the hour, minute and second of the date
+        /// </summary>
+        /// <param name="date">date</param>
         private string CreateDateString(DateTime date)
         {
             StringBuilder stringBuilder = new StringBuilder();

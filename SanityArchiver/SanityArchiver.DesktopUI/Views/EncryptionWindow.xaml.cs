@@ -24,6 +24,9 @@ namespace SanityArchiver.DesktopUI.Views
     {
         private readonly EncryptionViewModel _viewModel;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EncryptionWindow"/> class.
+        /// </summary>
         public EncryptionWindow()
         {
             InitializeComponent();
