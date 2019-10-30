@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="Sanity Archiver" Height="700" Width="600">
     <Grid>
-        <TreeView x:Name="DirectoryMap" HorizontalAlignment="Left" Height="649" Margin="10,10,0,0" VerticalAlignment="Top" Width="191" TreeViewItem.Collapsed="ItemCollapseHandler" TreeViewItem.Expanded="ItemExpandedHandler"/>
+        <TreeView x:Name="DirectoryMap" HorizontalAlignment="Left" Height="649" Margin="10,10,0,0" VerticalAlignment="Top" Width="311" TreeViewItem.Collapsed="ItemCollapseHandler" TreeViewItem.Expanded="ItemExpandedHandler"/>
     </Grid>
 </Window>
